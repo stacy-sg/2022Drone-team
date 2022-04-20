@@ -6,4 +6,4 @@
 
 ### 💡 branch
 * 이슬기 - seulgi<br>
-* 유하영 - hayoung<br>
+* 유하영 - hayeong<br>
