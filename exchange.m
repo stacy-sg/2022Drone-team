@@ -17,9 +17,6 @@ for i = 1:length(dollar_units)
     if dollar_units(i) >= 1
         % Dollar 출력
         fprintf("%-4dDollar\t\t%d개\n", dollar_units(i), dollar(i));
-    else
-        % Cent 출력
-        fprintf("%-4dCent\t\t%d개\n", dollar_units(i) * 100 , dollar(i));
     end
     cnt = sum(dollar); %화폐 총 개수 세기
 end
@@ -51,9 +48,6 @@ for i = 1:length(euro_units)
     if euro_units(i) >= 1
         % Euro 출력
         fprintf("%-4dEuro\t\t%d개\n", euro_units(i), euro(i));
-    else
-        % Cent 출력
-        fprintf("%-4dCent\t\t%d개\n", euro_units(i) * 100 , euro(i));
     end
     cnt = sum(euro); %화폐 총 개수 세기
 end
@@ -71,12 +65,6 @@ for i = 1:length(yuan_units)
     if yuan_units(i) >= 1
         % 위안 출력
         fprintf("%-4d元\t\t%d개\n", yuan_units(i), yuan(i));
-    elseif yuan_units(i) >= 0.1
-        % 자오 출력
-        fprintf("%-4d角\t\t%d개\n", yuan_units(i) * 10 , yuan(i));
-    else
-        % 펀 출력
-        fprintf("%-4d分\t\t%d개\n", yuan_units(i) * 100 , yuan(i));
     end
     cnt = sum(yuan); %화폐 총 개수 세기
 end
