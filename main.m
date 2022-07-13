@@ -149,7 +149,7 @@ while true
     hsv_img = rgb2hsv(purple_frame);
     h = hsv_img(:,:,1);
     s = hsv_img(:,:,2);
-    threshold = (0.6 < h) & (h < 0.65);
+    threshold = (0.675 < h) & (h < 0.775);
     threshold_s = (0.7 < s) & (s < 0.75);
     purple_ = threshold & threshold_s;
     detect_purple = bwareaopen(purple_, 500);
@@ -235,12 +235,12 @@ while true
     hsv_img = rgb2hsv(red_frame);
     h = hsv_img(:,:,1);
     s = hsv_img(:,:,2);
-    threshold = (0.6 < h) & (h < 0.65);
-    threshold_s = (0.7 < s) & (s < 0.75);
+    threshold = (0 <= h) & (h < 0.05) | (h <= 1) & (h > 0.95);
+    threshold_s = (0.6 < s) & (s <= 1);
     red_ = threshold & threshold_s;
-    detect_purple = bwareaopen(red_, 500);
+    detect_red = bwareaopen(red_, 500);
 
-    canny_img= edge(detect_purple,'canny');
+    canny_img= edge(detect_red,'canny');
     [w, h] = find(canny_img);
     y1 = max(w) - min(w);
     x1 = max(h) - min(h);
@@ -250,8 +250,6 @@ while true
         moveforward(droneObj, 'Distance', 0.3);
     else
         moveforward(droneObj, 'Distance', 0.2);
-        turn(droneObj,deg2rad(90));
-        moveforward(droneObj, 'Distance', 1);
         break;
     end
 end
