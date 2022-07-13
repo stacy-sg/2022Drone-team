@@ -40,6 +40,7 @@
 3단계 모두 위의 알고리즘을 토대로 구성하였으며, 2, 3단계와 같은 경우에는 파란천의 높이와 좌우가 달라지는 조건이 있었기에 코드를 몇가지 추가해주었습니다.
 
 ![영상처리 화면](https://user-images.githubusercontent.com/82217475/178765377-35e30f2d-90fc-4a5d-80f3-bf3248f552fc.png)
+<img src="/path/to/img.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 
 ![드론 흐름도](https://user-images.githubusercontent.com/82217475/178762730-f65b40b6-3f0b-40fb-bab1-e663d9217430.png)
 
