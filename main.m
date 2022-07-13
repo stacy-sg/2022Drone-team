@@ -2,7 +2,7 @@ droneObj = ryze();
 cameraObj = camera(droneObj);
 
 takeoff(droneObj);
-moveup(droneObj, 'Distance', 0.4);
+moveup(droneObj, 'Distance', 0.3);
 
 %원 찾기
 while true
@@ -52,16 +52,44 @@ while true
     
     if (460>mid2 || mid2>500)||(340>mid1 || mid1>380) 
         if x>0
-            moveright(droneObj, 'Distance', 0.1);
+            moveright(droneObj, 'Distance', 0.2);
         elseif x<0
-            moveleft(droneObj, 'Distance', 0.1);
+            moveleft(droneObj, 'Distance', 0.2);
         end
         if y>0
-            movedown(droneObj, 'Distance', 0.1);
+            movedown(droneObj, 'Distance', 0.2);
         elseif y<0
-            moveup(droneObj, 'Distance', 0.1);
+            moveup(droneObj, 'Distance', 0.2);
         end
     else
+        moveforward(droneObj, 'Distance', 1);
+        break;
+    end
+end
+
+% 마크 인식 90도 회전
+while true
+    green_frame = snapshot(cameraObj);
+    hsv_img = rgb2hsv(green_frame);
+    h = hsv_img(:,:,1);
+    %s = hsv_img(:,:,2);
+    threshold = (0.3 < h) & (h < 0.35);
+    %threshold_s = (0.6 < s) & (s <= 1);
+    green_ = threshold;
+    detect_green = bwareaopen(green_, 500);
+
+    canny_img= edge(detect_green,'canny');
+    %figure(3),imshow(canny_img);
+    [w, h] = find(canny_img);
+    y1 = max(w) - min(w);
+    x1 = max(h) - min(h);
+    s = times(y1, x1);
+    
+    if s <= 1000    
+        moveforward(droneObj, 'Distance', 0.5);
+    else
+        moveforward(droneObj, 'Distance', 0.5);
+        turn(droneObj,deg2rad(90));
         moveforward(droneObj, 'Distance', 1);
         break;
     end
