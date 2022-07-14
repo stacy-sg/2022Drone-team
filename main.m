@@ -43,21 +43,8 @@ while true
     x=480-mid2;
     y=360-mid1;
     
-    if (460>mid2 || mid2>500)||(340>mid1 || mid1>380) 
-        if x>0
-            moveright(droneObj, 'Distance', 0.2);
-        elseif x<0
-            moveleft(droneObj, 'Distance', 0.2);
-        end
-        if y>0
-            movedown(droneObj, 'Distance', 0.2);
-        elseif y<0
-            moveup(droneObj, 'Distance', 0.2);
-        end
-    else
-        moveforward(droneObj, 'Distance', 1);
-        break;
-    end
+    moveforward(droneObj, 'Distance', 1);
+    break;
 end
 
 % 마크 인식 90도 회전
@@ -78,9 +65,9 @@ while true
     s = times(y1, x1);
     
     if s <= 1000    
-        moveforward(droneObj, 'Distance', 0.3);
+        moveforward(droneObj, 'Distance', 0.5);
     else
-        moveforward(droneObj, 'Distance', 0.2);
+        moveforward(droneObj, 'Distance', 0.5);
         turn(droneObj,deg2rad(90));
         moveforward(droneObj, 'Distance', 1.5);
         break;
@@ -161,9 +148,9 @@ while true
     s = times(y1, x1);
     
     if s <= 1000    
-        moveforward(droneObj, 'Distance', 0.3);
+        moveforward(droneObj, 'Distance', 0.5);
     else
-        moveforward(droneObj, 'Distance', 0.2);
+        moveforward(droneObj, 'Distance', 0.5);
         turn(droneObj,deg2rad(90));
         moveforward(droneObj, 'Distance', 1);
         break;
